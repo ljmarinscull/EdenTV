@@ -1,9 +1,10 @@
+import '../../data/models/movie_model.dart';
 import '../../domain/entities/movie.dart';
 import 'map_list.dart';
 
 class MovieMapper {
-  static Movie fromJson(Map<String, dynamic> json) =>
-      Movie(
+  static MovieModel fromJson(Map<String, dynamic> json) =>
+      MovieModel(
           id: json['id'] ?? "",
           title: json['title'] ?? "",
           year: json['year'] ?? "",

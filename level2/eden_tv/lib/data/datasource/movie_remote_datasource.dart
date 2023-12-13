@@ -2,6 +2,7 @@ import 'dart:convert';
 
 import 'package:EdenTV/core/error/failure.dart';
 import 'package:EdenTV/data/datasource/api_client.dart';
+import 'package:EdenTV/data/models/movie_model.dart';
 import 'package:dartz/dartz.dart';
 import 'package:dio/dio.dart';
 
@@ -25,7 +26,7 @@ class MovieRemoteDatasource {
 
   MovieRemoteDatasource(this.apiClient, [this.url = ""]);
 
-  Future<Either<Failure, List<Movie>>> requestMovies() async {
+  Future<Either<Failure, List<MovieModel>>> requestMovies() async {
     final result = await apiClient.get(url);
     
     if(result.isRight()){
@@ -34,7 +35,7 @@ class MovieRemoteDatasource {
     return Left(result.asLeft());
   }
 
-  List<Movie> handleResponse(dynamic responseData){
+  List<MovieModel> handleResponse(dynamic responseData){
     final data = (json.decode(responseData) as List);
     return data.map((value) => MovieMapper.fromJson(value)).toList();
   }
