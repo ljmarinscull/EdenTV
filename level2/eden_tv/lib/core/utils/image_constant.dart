@@ -27,4 +27,8 @@ class ImageConstant {
 
   static String imgNavhome = '$imagePath/img_play.svg';
 
+  static String imgMail = '$imagePath/img_mail.svg';
+
+  static String imgLockBlueGray300 = '$imagePath/img_lock_blue_gray_300.svg';
+
 }

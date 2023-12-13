@@ -20,6 +20,18 @@ class CustomBottomBarState extends State<CustomBottomBar> {
       activeIcon: ImageConstant.imgNavhome,
       title: "Movies",
       type: BottomBarEnum.Home,
+    ),
+    BottomMenuModel(
+      icon: ImageConstant.imgTrophy,
+      activeIcon: ImageConstant.imgTrophy,
+      title: "Watclist",
+      type: BottomBarEnum.Home,
+    ),
+    BottomMenuModel(
+      icon: ImageConstant.imgUser,
+      activeIcon: ImageConstant.imgUser,
+      title: "Profile",
+      type: BottomBarEnum.Home,
     )
   ];
 
@@ -109,6 +121,8 @@ class CustomBottomBarState extends State<CustomBottomBar> {
 
 enum BottomBarEnum {
   Home,
+  Watchlist,
+  Profile,
 }
 
 class BottomMenuModel {

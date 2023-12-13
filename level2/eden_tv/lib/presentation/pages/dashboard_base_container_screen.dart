@@ -37,6 +37,10 @@ class DashboardContainerBaseScreen extends ConsumerWidget {
     switch (type) {
       case BottomBarEnum.Home:
         return AppRoutes.dashboardContainerPage;
+      case BottomBarEnum.Watchlist:
+        return AppRoutes.dashboardContainerPage;
+      case BottomBarEnum.Profile:
+        return AppRoutes.dashboardContainerPage;
       default:
         return "/";
     }
