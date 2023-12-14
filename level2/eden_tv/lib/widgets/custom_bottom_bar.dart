@@ -16,22 +16,22 @@ class CustomBottomBarState extends State<CustomBottomBar> {
 
   List<BottomMenuModel> bottomMenuList = [
     BottomMenuModel(
-      icon: ImageConstant.imgNavhome,
-      activeIcon: ImageConstant.imgNavhome,
+      icon: ImageConstant.imgHome,
+      activeIcon: ImageConstant.imgHome,
       title: "Movies",
       type: BottomBarEnum.Home,
     ),
     BottomMenuModel(
-      icon: ImageConstant.imgTrophy,
-      activeIcon: ImageConstant.imgTrophy,
-      title: "Watclist",
-      type: BottomBarEnum.Home,
+      icon: ImageConstant.imgWatchlist,
+      activeIcon: ImageConstant.imgWatchlist,
+      title: "Watchlist",
+      type: BottomBarEnum.Watchlist,
     ),
     BottomMenuModel(
-      icon: ImageConstant.imgUser,
-      activeIcon: ImageConstant.imgUser,
+      icon: ImageConstant.imgProfile,
+      activeIcon: ImageConstant.imgProfile,
       title: "Profile",
-      type: BottomBarEnum.Home,
+      type: BottomBarEnum.Profile,
     )
   ];
 
