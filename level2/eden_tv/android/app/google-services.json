@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "943096039849",
+    "project_id": "edentv-457d0",
+    "storage_bucket": "edentv-457d0.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:943096039849:android:ab751d4efb252ff9181cb8",
+        "android_client_info": {
+          "package_name": "com.edentv.eden_tv"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDCqg8QV1w3Mu5chufgWCsrjgPpdktALxI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
