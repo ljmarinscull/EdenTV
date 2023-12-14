@@ -15,7 +15,7 @@ class SectionListWidget extends StatelessWidget {
         );
 
   _navigationToDetails(BuildContext context, Movie movie)  {
-    Navigator.pushNamed(
+    Navigator.pushReplacementNamed(
         context,
         AppRoutes.detailMovieScreen,
         arguments: movie
