@@ -19,7 +19,7 @@ class SplashScreen extends ConsumerStatefulWidget {
 }
 
 class _SplashScreenState extends ConsumerState<SplashScreen> {
-  final ValueNotifier<bool> loading = ValueNotifier<bool>(true);
+  final ValueNotifier<bool> _loading = ValueNotifier<bool>(true);
 
   @override
   void initState() {
@@ -66,9 +66,9 @@ class _SplashScreenState extends ConsumerState<SplashScreen> {
   }
   _requestMovies() async {
     await Future.delayed(const Duration(seconds: 2));
-    loading.value = true;
+    _loading.value = true;
     await ref.read(requestMoviesNotifierProvider.notifier).requestMovies();
-    loading.value = false;
+    _loading.value = false;
   }
 
   @override
@@ -113,7 +113,7 @@ class _SplashScreenState extends ConsumerState<SplashScreen> {
                 Padding(
                   padding: const EdgeInsets.only(bottom: 32),
                   child: ValueListenableBuilder<bool>(
-                      valueListenable: loading,
+                      valueListenable: _loading,
                       builder: (context, loading, child) {
                         return Visibility(
                             visible: loading,

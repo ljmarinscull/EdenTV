@@ -17,7 +17,7 @@ class LoginScreen extends ConsumerStatefulWidget {
 
 class _LoginScreenState extends ConsumerState<LoginScreen> {
 
-  final ValueNotifier<bool> loading = ValueNotifier<bool>(true);
+  final ValueNotifier<bool> _loading = ValueNotifier<bool>(false);
 
   TextEditingController emailController = TextEditingController();
 
@@ -26,7 +26,9 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
 
   signIn(String email, String password) {
+    _loading.value = true;
     ref.read(authNotifierProvider.notifier).signInUser(email, password).then((result){
+    _loading.value = false;
       Navigator.pushReplacementNamed(
           context, AppRoutes.dashboardBaseContainerPage);
       });
