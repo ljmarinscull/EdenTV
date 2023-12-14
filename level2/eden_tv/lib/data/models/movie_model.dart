@@ -1,31 +1,31 @@
-import 'package:hive/hive.dart';
 import 'package:EdenTV/core/utils/map_list.dart';
+import 'package:hive/hive.dart';
 
 import '../../domain/entities/movie.dart';
 
 part 'movie_model.g.dart';
 
-@HiveType(typeId: 0)
-class MovieModel {
-  @HiveField(1)
+@HiveType(typeId: 0, adapterName: "MovieModelAdapter")
+class MovieModel extends HiveObject {
+  @HiveField(0)
   final String id;
-  @HiveField(2)
+  @HiveField(1)
   final String title;
-  @HiveField(3)
+  @HiveField(2)
   final String year;
-  @HiveField(4)
+  @HiveField(3)
   final List<String> genres;
-  @HiveField(5)
+  @HiveField(4)
   final List<int> ratings;
-  @HiveField(6)
+  @HiveField(5)
   final String duration;
-  @HiveField(7)
+  @HiveField(6)
   final String releaseDate;
-  @HiveField(8)
+  @HiveField(7)
   final String storyline;
-  @HiveField(9)
+  @HiveField(8)
   final List<String> actors;
-  @HiveField(10)
+  @HiveField(9)
   final String posterUrl;
 
   MovieModel(

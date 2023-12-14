@@ -32,21 +32,21 @@ class Movie {
     return (ratings.reduce((a, b) => a + b) / ratings.length).toDoubleValue(fractionDigits:1);
   }
 
-  get allGenres => genres.join(", ");
-  get cast => actors.join(", ");
+  String get allGenres => genres.join(", ");
+  String get cast => actors.join(", ");
 
   static Movie empty() {
     return Movie(
         id: "-1",
-        title: "unknown",
+        title: "Avengers",
         year: "unknown",
-        genres: [],
-        ratings: [],
-        duration: "unknown",
-        releaseDate: "unknown",
+        genres: ["Drama"],
+        ratings: [10],
+        duration: "3h 5m",
+        releaseDate: "2020",
         storyline: "unknown",
         actors: [],
-        posterUrl: "unknown");
+        posterUrl: "https://images-na.ssl-images-amazon.com/images/M/MV5BMjQxMDE5NDg0NV5BMl5BanBnXkFtZTgwNTA5MDE2NDM@._V1_SY500_CR0,0,337,500_AL_.jpg");
   }
 
  @override
