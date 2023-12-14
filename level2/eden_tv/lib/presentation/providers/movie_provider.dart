@@ -1,5 +1,5 @@
 import 'package:EdenTV/core/app_export.dart';
-import 'package:flutter/cupertino.dart';
+import 'package:EdenTV/presentation/providers/auth_provider.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:hive/hive.dart';
 
@@ -59,13 +59,16 @@ class RequestMovieListNotifier extends StateNotifier<MovieUIState?> {
 }
 
 final getWatchlistByUserProvider = Provider<GetWatchlistByUser>((ref) {
-  final repository = ref.read(movieRepositoryProvider);
-  return GetWatchlistByUser(repository);
+  final movieRepository = ref.read(movieRepositoryProvider);
+  final authRepository = ref.read(authRepositoryProvider);
+  return GetWatchlistByUser(authRepository, movieRepository);
 });
 
 final addMovieToWatchlistProvider = Provider<AddMovieToWatchlist>((ref) {
-  final repository = ref.read(movieRepositoryProvider);
-  return AddMovieToWatchlist(repository);
+  final movieRepository = ref.read(movieRepositoryProvider);
+  final authRepository = ref.read(authRepositoryProvider);
+
+  return AddMovieToWatchlist(authRepository,movieRepository);
 });
 
 final userWatchlistNotifierProvider = StateNotifierProvider<UserWatchlistNotifier, List<Movie>>((ref) {
@@ -82,13 +85,13 @@ class UserWatchlistNotifier extends StateNotifier<List<Movie>> {
   UserWatchlistNotifier(this._watchlistByUser, this._addMovieToWatchlist)
       : super([]);
 
-  void loadMovieWatchList(String username) {
-    final moviesOrFailure = _watchlistByUser(username);
+  void loadMovieWatchList() {
+    final moviesOrFailure = _watchlistByUser();
     moviesOrFailure.fold((error) => state = [], (movies) => state = movies);
   }
 
-  Future<void> addMovieToWatchlist(String username, Movie movie) async {
-    await _addMovieToWatchlist(username, movie);
+  Future<void> addMovieToWatchlist(Movie movie) async {
+    await _addMovieToWatchlist(movie);
   }
 }
 

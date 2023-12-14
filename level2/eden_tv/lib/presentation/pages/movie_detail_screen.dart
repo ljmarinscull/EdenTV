@@ -26,7 +26,7 @@ class _MovieDetailScreenState extends ConsumerState<MovieDetailScreen> {
     _loading.value = true;
     await ref
         .read(userWatchlistNotifierProvider.notifier)
-        .addMovieToWatchlist("lolo", widget.movie);
+        .addMovieToWatchlist(widget.movie);
     _loading.value = false;
   }
 
@@ -282,7 +282,7 @@ class _MovieDetailScreenState extends ConsumerState<MovieDetailScreen> {
                               height: 50,
                               child: CircularProgressIndicator(
                                 color: Colors.white,
-                                semanticsLabel: "CircularProgressIndicator",
+                                semanticsLabel: "Circular Progress Indicator",
                               ),
                             ))
                           : Container());
