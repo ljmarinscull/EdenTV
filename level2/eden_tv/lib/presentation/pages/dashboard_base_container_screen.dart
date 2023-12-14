@@ -1,7 +1,10 @@
 import 'package:EdenTV/core/app_export.dart';
+import 'package:EdenTV/presentation/pages/movie_detail_screen.dart';
+import 'package:EdenTV/presentation/pages/watchlist_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
+import '../../domain/entities/movie.dart';
 import '../../widgets/custom_bottom_bar.dart';
 import 'dashboard_container_page.dart';
 
@@ -23,7 +26,7 @@ class DashboardContainerBaseScreen extends ConsumerWidget {
                 initialRoute: AppRoutes.dashboardContainerPage,
                 onGenerateRoute: (routeSetting) => PageRouteBuilder(
                     pageBuilder: (ctx, ani, ani1) =>
-                        getCurrentPage(routeSetting.name!),
+                        getCurrentPage(routeSetting),
                     transitionDuration: const Duration(seconds: 0))),
             bottomNavigationBar:
                 CustomBottomBar(onChanged: (BottomBarEnum type) {
@@ -38,19 +41,25 @@ class DashboardContainerBaseScreen extends ConsumerWidget {
       case BottomBarEnum.Home:
         return AppRoutes.dashboardContainerPage;
       case BottomBarEnum.Watchlist:
-        return AppRoutes.dashboardContainerPage;
+        return AppRoutes.watchlistScreen;
       case BottomBarEnum.Profile:
-        return AppRoutes.dashboardContainerPage;
+        return AppRoutes.profileScreen;
       default:
         return "/";
     }
   }
 
   ///Handling page based on route
-  Widget getCurrentPage(String currentRoute) {
-    switch (currentRoute) {
+  Widget getCurrentPage(RouteSettings settings) {
+    switch (settings.name) {
       case AppRoutes.dashboardContainerPage:
         return const DashboardContainerPage();
+      case AppRoutes.watchlistScreen:
+        return const WatchlistPage();
+      case AppRoutes.profileScreen:
+        return const DefaultWidget();
+      case AppRoutes.detailMovieScreen:
+        return MovieDetailScreen(movie: settings.arguments as Movie);
       default:
         return const DefaultWidget();
     }
