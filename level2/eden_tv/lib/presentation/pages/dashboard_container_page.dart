@@ -30,10 +30,10 @@ class DashboardContainerPage extends ConsumerWidget {
                 actions: [
                   AppbarImage(
                       svgPath: ImageConstant.imgTrophy,
-                      margin: getMargin(left: 18, top: 19, right: 16)),
+                      margin: getMargin(left: 16, top: 16, right: 16, bottom: 16)),
                   AppbarImage(
                       svgPath: ImageConstant.imgLock,
-                      margin: getMargin(left: 24, top: 19, right: 34))
+                      margin: getMargin(left: 16, top: 16, right: 32, bottom: 16))
                 ]),
             body: uiState == null ? const Center(
                 child: CircularProgressIndicator(
