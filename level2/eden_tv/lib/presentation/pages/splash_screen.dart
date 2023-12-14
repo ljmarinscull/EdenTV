@@ -8,6 +8,7 @@ import '../../../core/utils/size_utils.dart';
 import '../../../theme/theme_helper.dart';
 import '../../routes/app_routes.dart';
 import '../../theme/custom_text_style.dart';
+import '../providers/auth_provider.dart';
 import '../providers/movie_provider.dart';
 
 class SplashScreen extends ConsumerStatefulWidget {
@@ -23,6 +24,7 @@ class _SplashScreenState extends ConsumerState<SplashScreen> {
   @override
   void initState() {
      WidgetsBinding.instance.addPostFrameCallback((timeStamp) async {
+
        await _requestMovies();
 
        _init();
@@ -53,8 +55,14 @@ class _SplashScreenState extends ConsumerState<SplashScreen> {
   }
 
   _navigationToHome(){
-    Navigator.pushReplacementNamed(
-        context, AppRoutes.dashboardContainerPage);
+    final isUserLoggedIn = ref.watch(authNotifierProvider.notifier).isUserLoggedIn();
+    if(isUserLoggedIn){
+      Navigator.pushReplacementNamed(
+          context, AppRoutes.dashboardContainerPage);
+    } else {
+      Navigator.pushReplacementNamed(
+          context, AppRoutes.loginScreen);
+    }
   }
   _requestMovies() async {
     await Future.delayed(const Duration(seconds: 2));
