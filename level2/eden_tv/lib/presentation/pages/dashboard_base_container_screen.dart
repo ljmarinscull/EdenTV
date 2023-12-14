@@ -1,5 +1,6 @@
 import 'package:EdenTV/core/app_export.dart';
 import 'package:EdenTV/presentation/pages/movie_detail_screen.dart';
+import 'package:EdenTV/presentation/pages/profile_page.dart';
 import 'package:EdenTV/presentation/pages/watchlist_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -57,7 +58,7 @@ class DashboardContainerBaseScreen extends ConsumerWidget {
       case AppRoutes.watchlistScreen:
         return const WatchlistPage();
       case AppRoutes.profileScreen:
-        return const DefaultWidget();
+        return const ProfilePage();
       case AppRoutes.detailMovieScreen:
         return MovieDetailScreen(movie: settings.arguments as Movie);
       default:
