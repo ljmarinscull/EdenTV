@@ -2,7 +2,7 @@ import 'package:EdenTV/presentation/pages/dashboard_base_container_screen.dart';
 import 'package:EdenTV/presentation/pages/login_screen.dart';
 import 'package:flutter/material.dart';
 
-import '../presentation/pages/movie_detail_screen.dart';
+import '../presentation/pages/profile_page.dart';
 import '../presentation/pages/splash_screen.dart';
 
 class AppRoutes {
@@ -16,7 +16,8 @@ class AppRoutes {
 
   static Map<String, WidgetBuilder> routes = {
     splashScreen: (context) => const SplashScreen(),
-    loginScreen: (context) => LoginScreen(),
+    loginScreen: (context) => const LoginScreen(),
     dashboardBaseContainerPage: (context) => DashboardContainerBaseScreen(),
+    profileScreen: (context) => const ProfilePage(),
   };
 }
