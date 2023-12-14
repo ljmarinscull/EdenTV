@@ -7,7 +7,7 @@ class AddMovieToWatchlist {
 
   AddMovieToWatchlist(this.repository);
 
-  Future<void> call(String username, Movie movie){
-    return repository.addMovieToWatchlist(username, movie);
+  Future<void> call(String username, Movie movie) async {
+    await repository.addMovieToWatchlist(username, movie);
   }
 }
