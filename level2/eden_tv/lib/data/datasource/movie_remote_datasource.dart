@@ -4,10 +4,8 @@ import 'package:EdenTV/core/error/failure.dart';
 import 'package:EdenTV/data/datasource/api_client.dart';
 import 'package:EdenTV/data/models/movie_model.dart';
 import 'package:dartz/dartz.dart';
-import 'package:dio/dio.dart';
 
 import '../../core/utils/movie_mapper.dart';
-import '../../domain/entities/movie.dart';
 
 enum MovieRemoteDatasourceError {
   invalidData,

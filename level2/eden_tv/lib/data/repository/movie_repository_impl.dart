@@ -29,7 +29,7 @@ class MovieRepositoryImpl extends MovieRepository {
   Future<Either<Failure, MovieUIState>> handleResponse(
       List<MovieModel> movies) async {
     try {
-      localDatasource.addAll(movies);
+      await localDatasource.addAll(movies);
 
       final mappedMovies = movies.map((e) => e.toEntity()).toList();
       final bestRatedMovie = await getBestRatedMovie(mappedMovies);
@@ -44,17 +44,18 @@ class MovieRepositoryImpl extends MovieRepository {
   }
 
   Future<Movie> getBestRatedMovie(List<Movie> movies) =>
-      Future(() => movies.reduce((currentMovie, nextMovie) =>
-      currentMovie.getRating() > nextMovie.getRating()
-          ? currentMovie
-          : nextMovie));
+      Future(() =>
+          movies.reduce((currentMovie, nextMovie) =>
+          currentMovie.getRating() > nextMovie.getRating()
+              ? currentMovie
+              : nextMovie));
 
   Map<String, List<Movie>> getMoviesByCategories(List<Movie> movies) {
     final genres = movies.expand((element) => element.genres).toSet();
     final result = <String, List<Movie>>{};
     for (var genres in genres) {
       result.putIfAbsent(genres,
-          () => movies.where((el) => el.genres.contains(genres)).toList());
+              () => movies.where((el) => el.genres.contains(genres)).toList());
     }
     return result;
   }
@@ -62,13 +63,17 @@ class MovieRepositoryImpl extends MovieRepository {
   handleError(Failure error) => Left(error);
 
   @override
-  addMovieToWatchlist(String username, Movie movie) {
-    localDatasource.addMovieToWatchlist(username, MovieModel.fromEntity(movie));
+  Future<void> addMovieToWatchlist(String username, Movie movie) async {
+    await localDatasource.addMovieToWatchlist(username, MovieModel.fromEntity(movie));
   }
 
   @override
-  List<Movie> getWatchlistByUser(String username) {
+  Either<Failure, List<Movie>> getWatchlistByUser(String username) {
+    try {
       final result = localDatasource.getWatchlistByUser(username);
-      return result.map((e) => e.toEntity()).toList();
+      return Right(result.map((e) => e.toEntity()).toList());
+    } catch (error) {
+      return Left(SomeSpecificError(error.toString()));
+    }
   }
 }
