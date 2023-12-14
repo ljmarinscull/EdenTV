@@ -1,5 +1,4 @@
 import '../../data/models/movie_model.dart';
-import '../../domain/entities/movie.dart';
 import 'map_list.dart';
 
 class MovieMapper {
