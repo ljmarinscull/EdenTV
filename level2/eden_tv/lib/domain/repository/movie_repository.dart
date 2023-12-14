@@ -6,6 +6,6 @@ import '../entities/movie_ui_state.dart';
 
 abstract class MovieRepository {
     Future<Either<Failure, MovieUIState>> requestMovies();
-    Either<Failure,List<Movie>> getWatchlistByUser(String username);
+    Either<Failure,List<Movie>> getWatchlistByUser(String username,);
     Future<void> addMovieToWatchlist(String username, Movie movie);
 }

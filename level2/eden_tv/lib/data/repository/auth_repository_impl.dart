@@ -28,4 +28,7 @@ class FirebaseAuthRepository extends AuthRepository {
   void logoutUser() {
     auth.signOut();
   }
+
+  @override
+  String loggedUserUsername() => auth.currentUser?.email ?? "";
 }

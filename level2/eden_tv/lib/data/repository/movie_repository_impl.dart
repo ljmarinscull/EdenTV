@@ -29,7 +29,7 @@ class MovieRepositoryImpl extends MovieRepository {
   Future<Either<Failure, MovieUIState>> handleResponse(
       List<MovieModel> movies) async {
     try {
-      await localDatasource.addAll(movies);
+      localDatasource.addAll(movies);
 
       final mappedMovies = movies.map((e) => e.toEntity()).toList();
       final bestRatedMovie = await getBestRatedMovie(mappedMovies);
