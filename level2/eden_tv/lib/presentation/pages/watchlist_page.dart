@@ -1,5 +1,4 @@
 import 'package:EdenTV/core/app_export.dart';
-import 'package:EdenTV/domain/entities/movie.dart';
 import 'package:EdenTV/presentation/pages/widgets/list_item_land_widget.dart';
 import 'package:EdenTV/widgets/app_bar/custom_app_bar.dart';
 import 'package:flutter/material.dart';
@@ -21,7 +20,7 @@ class _WatchlistPageState extends ConsumerState<WatchlistPage> {
   @override
   void initState() {
     WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
-      ref.read(userWatchlistNotifierProvider.notifier).loadMovieWatchList("lolo");
+      ref.read(userWatchlistNotifierProvider.notifier).loadMovieWatchList();
     });
     super.initState();
   }
@@ -55,8 +54,7 @@ class _WatchlistPageState extends ConsumerState<WatchlistPage> {
             : ListView.separated(
                 padding: getPadding(
                     left: 16,
-                    top: 32,
-                    right: 41,
+                    right: 16,
                     bottom: 1),
                 separatorBuilder: (context, index) {
                   return const Divider();

@@ -2,6 +2,7 @@
 import 'package:hive/hive.dart';
 
 import 'movie_model.dart';
+
 part 'watchlist_model.g.dart';
 
 @HiveType(typeId: 1, adapterName: "WatchListAdapter")
