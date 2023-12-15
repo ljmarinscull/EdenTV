@@ -13,14 +13,17 @@ class FirebaseAuthRepository extends AuthRepository {
   bool isUserLoggedIn() => auth.currentUser != null;
 
   @override
-  Future<Either<Failure, UserCredential>> loginUser(
+  Future<Either<Failure, bool>> loginUser(
       String email, String password) async {
     try {
-      final userCredentials = await auth.signInWithEmailAndPassword(
-          email: email, password: password);
-      return Right(userCredentials);
+      await auth
+          .signInWithEmailAndPassword(
+          email: email,
+          password: password
+      );
+      return const Right(true);
     } catch (error) {
-      return Left(SomeSpecificError(""));
+      return Left(SomeSpecificError('Login failed'));
     }
   }
 
@@ -30,5 +33,5 @@ class FirebaseAuthRepository extends AuthRepository {
   }
 
   @override
-  String loggedUserUsername() => auth.currentUser?.email ?? "";
+  String loggedUserUsername() => auth.currentUser?.email ?? '';
 }
