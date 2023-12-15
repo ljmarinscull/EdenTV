@@ -1,5 +1,10 @@
 # EdenTV
 Movie app
+
+## Some credentials to test login ##
+admin@gmail.com / 12345678</br>
+admin1@gmail.com /12345678
+
 ## Level 1 ##
 | SplashScreen                                                                      | Home                   |                                             Details                                        |
 | ---------------------- | ---------------------- |--------------------------------------------------------------------------------------------|
@@ -8,4 +13,6 @@ Movie app
 ## Level 2 ##
 | Login | Watchlist | Profile | 
 |-----------------------------|
-|       |  <img src="level2/screenshots/watchlist_page.jpg" height="500" alt="Watchlist Screenn"/>         |         |
+|       | <img src="level2/screenshots/watchlist_page.jpg" height="500" alt="Watchlist Screenn"/>|         |
+
+
