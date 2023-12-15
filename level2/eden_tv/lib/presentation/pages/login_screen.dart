@@ -24,15 +24,22 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
 
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
 
-  signIn(String email, String password) {
+  signIn(String email, String password) async {
     _loading.value = true;
-    ref.read(authNotifierProvider.notifier)
-        .signInUser(email, password)
-        .then((result) {
-      _loading.value = false;
-      Navigator.pushReplacementNamed(
-          context, AppRoutes.dashboardBaseContainerPage);
-    });
+    await ref.read(authNotifierProvider.notifier).signInUser(email, password);
+    _loading.value = false;
+
+    final signInResult = ref.read(authNotifierProvider);
+    if (signInResult) {
+      _navigate();
+    } else {
+      showError();
+    }
+  }
+
+  _navigate() {
+    Navigator.pushReplacementNamed(
+        context, AppRoutes.dashboardBaseContainerPage);
   }
 
   @override
@@ -117,14 +124,34 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
                                             "Don’t have an Account? Sign up here.",
                                             style: theme.textTheme.bodySmall))))
                           ]))),
-              _loading.value
-                  ? const Center(
-                      child: CircularProgressIndicator(
-                        color: Colors.white,
-                        semanticsLabel: "Circular Progress Indicator",
-                      ),
-                    )
-                  : Container()
+              ValueListenableBuilder<bool>(
+                  valueListenable: _loading,
+                  builder: (context, loading, child) {
+                    return Visibility(
+                        visible: loading,
+                        child: const Center(
+                            child: CircularProgressIndicator(
+                          color: Colors.white,
+                          semanticsLabel: 'Circular progress indicator',
+                        )));
+                  })
             ])));
+  }
+
+  showError(){
+    showDialog<String>(
+      context: context,
+      builder: (BuildContext context) => AlertDialog(
+        backgroundColor: appTheme.gray90001,
+        title: const Text('Error'),
+        content: const Text('An error has occurred. Check your internet connection and credentials and try again.'),
+        actions: <Widget>[
+          TextButton(
+            onPressed: () => Navigator.of(context).pop(),
+            child: Text('Got it', style: CustomTextStyles.bodySmallOnPrimary),
+          ),
+        ],
+      ),
+    );
   }
 }
