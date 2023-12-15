@@ -20,7 +20,7 @@ class ProfilePage extends ConsumerStatefulWidget {
 class _ProfilePageState extends ConsumerState<ProfilePage> {
   @override
   Widget build(BuildContext context) {
-    final username = ref.watch(authNotifierProvider)?.user?.email ?? "";
+    final username = ref.watch(authNotifierProvider.notifier).loggedUserUsername();
 
     return SafeArea(
         child: Scaffold(
@@ -72,7 +72,7 @@ class _ProfilePageState extends ConsumerState<ProfilePage> {
         builder: (context) => AlertDialog(
               backgroundColor: appTheme.gray90001,
               title: const Text(
-                "Are you sure you want logout?",
+                'Are you sure you want logout?',
                 style: TextStyle(
                   color: Colors.black,
                   fontSize: 25.0,
@@ -85,7 +85,7 @@ class _ProfilePageState extends ConsumerState<ProfilePage> {
                   onTap: () => Navigator.of(context).pop(false),
                   child: Container(
                     padding: const EdgeInsets.all(8.0),
-                    child: Text("Cancel",
+                    child: Text('Cancel',
                         style: CustomTextStyles.bodySmallOnPrimary),
                   ),
                 ),
@@ -105,7 +105,7 @@ class _ProfilePageState extends ConsumerState<ProfilePage> {
                   child: Container(
                     padding: const EdgeInsets.all(8.0),
                     child: Text(
-                      "Yes, I want",
+                      'Yes, I want',
                       style: CustomTextStyles.bodySmallOnPrimary,
                     ),
                   ),

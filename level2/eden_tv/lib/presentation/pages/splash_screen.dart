@@ -37,20 +37,7 @@ class _SplashScreenState extends ConsumerState<SplashScreen> {
     if (result != null) {
       _navigationToHome();
     } else {
-      showDialog<String>(
-        context: context,
-        builder: (BuildContext context) => AlertDialog(
-          backgroundColor: appTheme.gray90001,
-          title: const Text('Error'),
-          content: const Text('An error has occurred. Check your internet connection or try again later.'),
-          actions: <Widget>[
-            TextButton(
-              onPressed: () => exit(0),
-              child: Text('Got it', style: CustomTextStyles.bodySmallOnPrimary),
-            ),
-          ],
-        ),
-      );
+      showError();
     }
   }
 
@@ -127,6 +114,23 @@ class _SplashScreenState extends ConsumerState<SplashScreen> {
             ),
           ),
         ),
+      ),
+    );
+  }
+
+  showError(){
+    showDialog<String>(
+      context: context,
+      builder: (BuildContext context) => AlertDialog(
+        backgroundColor: appTheme.gray90001,
+        title: const Text('Error'),
+        content: const Text('An error has occurred. Check your internet connection or try again later.'),
+        actions: <Widget>[
+          TextButton(
+            onPressed: () => exit(0),
+            child: Text('Got it', style: CustomTextStyles.bodySmallOnPrimary),
+          ),
+        ],
       ),
     );
   }
