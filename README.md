@@ -13,6 +13,6 @@ admin1@gmail.com /12345678
 ## Level 2 ##
 | Login                                                                          | Watchlist                                                                            | Profile          
 |--------------------------------------------------------------------------------|--------------------------------------------------------------------------------------|------------------------------------
-|<img src="level2/screenshots/login_screen.jpg" height="500" alt="Login screen"/>|<img src="level2/screenshots/watchlist_page.jpg" height="500" alt="Watchlist screen"/>|<img src="level2/screenshots/profile_page.jpg" height="500" alt="Watchlist screen"/>         |
+|<img src="level2/screenshots/login_screen.jpg" height="500" alt="Login screen"/>|<img src="level2/screenshots/watchlist_page.jpg" height="500" alt="Watchlist screen"/>|<img src="level2/screenshots/profile_page.jpg" height="500" alt="Profile screen"/>         |
 
 
